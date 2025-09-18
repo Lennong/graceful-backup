@@ -53,11 +53,15 @@ graceful HOST stop
 ```
 Backup host
 ```bash
-graceful HOST backup
+graceful BACKUP host
+```
+Backup VM's
+```bash
+graceful BACKUP vm
 ```
 Backup folders
 ```bash
-graceful HOST folders
+graceful BACKUP folders
 ```
 
 ## ToDo
