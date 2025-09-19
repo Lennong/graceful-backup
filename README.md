@@ -39,10 +39,11 @@ ssh root@x.x.x.x
 
 # Usage
 
-You can pass one argument to the graceful script that commands the host itself after the Dockers and ProxMox VM's has shut down:
+You can pass two arguments to the graceful script.
 Valid inputs are; 'graceful [HOST,SERVICES,DOCKER,BACKUP] [reboot,stop,host,folders,all]'
 
 Examples:
+
 Reboot host after Dockers and ProxMox VM's has been shutdown
 ```bash
 graceful HOST reboot
