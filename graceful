@@ -15,15 +15,17 @@ userPBS="user"
 # Backup server (PBS) password
 passPBS="password"
 
+# Single files or folders to exclude in backup process.
+#Separate each full path by space, example:
+#excludeFILE="/swap"
+
 # Additional folders to include in backup process.
 #Separate each full path by space, example:
 #includeDIR="/config /etc/pve"
-includeDIR="/config /etc/pve"
 
 # Single folders to include in folder only backup.
 #Separate each full path by space, example:
 #singleDIR="/config/none /etc/none"
-singleDIR="/media/PROXMOX/DOCKER"
 
 ###########################
 #ProxMox Virtual Environment (PVE) settings
@@ -366,7 +368,7 @@ backup-host() {
 	fi
 	echo "" >> $RocketBackReport
 	echo "Backup HOST: Started $(date +%T)" >> $RocketBackReport
-	proxmox-backup-client backup "$userPBS".pxar:/ $(sed -e 's/[[:space:]]/ --include-dev /' -e '0,/\// s/\//--include-dev \//' <<< $includeDIR)
+	proxmox-backup-client backup "$userPBS".pxar:/ $(sed -e 's/[[:space:]]/ --exclude /' -e '0,/\// s/\//--exclude \//' <<< $excludeFILE) $(sed -e 's/[[:space:]]/ --include-dev /' -e '0,/\// s/\//--include-dev \//' <<< $includeDIR)
 	echo "Backup <-- HangBox" >> $RocketBackReport
 	echo "Backup HOST: Stopped $(date +%T)" >> $RocketBackReport
 }
